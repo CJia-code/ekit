@@ -15,7 +15,7 @@ import (
 
 // NewErrIndexOutOfRange 创建异常：索引越界
 func NewErrIndexOutOfRange(index int, length int) error {
-	return fmt.Errorf("【异常】index %d out of range %d", index, length)
+	return fmt.Errorf("【异常】索引 %d 超出范围 %d", index, length)
 }
 
 // NewErrInvalidType 创建异常：类型转换失败
