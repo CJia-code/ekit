@@ -16,8 +16,9 @@ func Contains[T comparable](src []T, val T) bool {
 }
 
 // ContainsFunc 判断切片中是否包含某个元素
+// 优先使用 Contains
 func ContainsFunc[T any](src []T, equal func(compare T) bool) bool {
-	// 遍历调用equal函数进行判断
+	// 遍历调用 equal 函数进行判断
 	for _, v := range src {
 		if equal(v) {
 			return true
@@ -54,6 +55,7 @@ func ContainsAnyFunc[T any](src, val []T, equal EqualFunc[T]) bool {
 func ContainsAll[T comparable](src, val []T) bool {
 	srcMap := toMap[T](src)
 	for _, v := range val {
+		// 一旦发现val中存在src中没有的元素，则返回false
 		if _, exist := srcMap[v]; !exist {
 			return false
 		}
@@ -65,6 +67,7 @@ func ContainsAll[T comparable](src, val []T) bool {
 // 优先使用 ContainsAll
 func ContainsAllFunc[T any](src, val []T, equal EqualFunc[T]) bool {
 	for _, valDst := range val {
+		// 引用 ContainsFunc >>> 判断切片中是否包含某个元素
 		if !ContainsFunc[T](src, func(src T) bool {
 			return equal(src, valDst)
 		}) {

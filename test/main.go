@@ -14,9 +14,6 @@ import (
 )
 
 func main() {
-	vals := slice.FindAll[int]([]int{2, 3, 4}, func(src int) bool {
-		return src%2 == 1
-	})
-	fmt.Println(vals)
-	fmt.Println(3 >> 8)
+	any1 := slice.ContainsAny([]int{1, 2, 3}, []int{3, 8})
+	fmt.Println(any1)
 }

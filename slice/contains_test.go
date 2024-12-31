@@ -26,30 +26,6 @@ func ExampleContainsFunc() {
 	// true
 }
 
-func ExampleContainsAll() {
-	res := ContainsAll[int]([]int{1, 2, 3}, []int{3, 1})
-	fmt.Println(res)
-	res = ContainsAll[int]([]int{1, 2, 3}, []int{3, 1, 4})
-	fmt.Println(res)
-	// Output:
-	// true
-	// false
-}
-
-func ExampleContainsAllFunc() {
-	res := ContainsAllFunc[int]([]int{1, 2, 3}, []int{3, 1}, func(src, dst int) bool {
-		return src == dst
-	})
-	fmt.Println(res)
-	res = ContainsAllFunc[int]([]int{1, 2, 3}, []int{3, 1, 4}, func(src, dst int) bool {
-		return src == dst
-	})
-	fmt.Println(res)
-	// Output:
-	// true
-	// false
-}
-
 func ExampleContainsAny() {
 	res := ContainsAny[int]([]int{1, 2, 3}, []int{3, 6})
 	fmt.Println(res)
@@ -66,6 +42,30 @@ func ExampleContainsAnyFunc() {
 	})
 	fmt.Println(res)
 	res = ContainsAllFunc[int]([]int{1, 2, 3}, []int{4, 7, 6}, func(src, dst int) bool {
+		return src == dst
+	})
+	fmt.Println(res)
+	// Output:
+	// true
+	// false
+}
+
+func ExampleContainsAll() {
+	res := ContainsAll[int]([]int{1, 2, 3}, []int{3, 1})
+	fmt.Println(res)
+	res = ContainsAll[int]([]int{1, 2, 3}, []int{3, 1, 4})
+	fmt.Println(res)
+	// Output:
+	// true
+	// false
+}
+
+func ExampleContainsAllFunc() {
+	res := ContainsAllFunc[int]([]int{1, 2, 3}, []int{3, 1}, func(src, dst int) bool {
+		return src == dst
+	})
+	fmt.Println(res)
+	res = ContainsAllFunc[int]([]int{1, 2, 3}, []int{3, 1, 4}, func(src, dst int) bool {
 		return src == dst
 	})
 	fmt.Println(res)
