@@ -14,10 +14,9 @@ import (
 )
 
 func main() {
-	val := []int{1, 2, 3, 4, 5}
-	fmt.Println(slice.FilterDelete(val, func(index int, val int) bool {
-		return index == 2
-	}))
-	fmt.Println(slice.Contains(val, 13))
-	fmt.Println(slice.ContainsAny(val, []int{1, 2, 3}))
+	vals := slice.FindAll[int]([]int{2, 3, 4}, func(src int) bool {
+		return src%2 == 1
+	})
+	fmt.Println(vals)
+	fmt.Println(3 >> 8)
 }

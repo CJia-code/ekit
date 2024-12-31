@@ -9,7 +9,6 @@
 package slice
 
 import (
-	"fmt"
 	"github.com/CJia-code/ekit/internal/slice"
 )
 
@@ -23,7 +22,6 @@ func FilterDelete[T any](src []T, m func(index int, val T) bool) []T {
 	// 记录被删除的元素位置，也称空缺的位置
 	emptyPos := 0
 	for index := range src {
-		fmt.Println(index)
 		// 判断是否满足删除的条件
 		if m(index, src[index]) {
 			continue

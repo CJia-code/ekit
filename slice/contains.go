@@ -8,17 +8,15 @@
 
 package slice
 
-import "fmt"
-
 // Contains 判断切片中是否包含某个元素
 func Contains[T comparable](src []T, val T) bool {
-	return ContainsFunc[T](src, func(src T) bool {
-		return src == val
+	return ContainsFunc[T](src, func(compare T) bool {
+		return compare == val
 	})
 }
 
 // ContainsFunc 判断切片中是否包含某个元素
-func ContainsFunc[T any](src []T, equal func(src T) bool) bool {
+func ContainsFunc[T any](src []T, equal func(compare T) bool) bool {
 	// 遍历调用equal函数进行判断
 	for _, v := range src {
 		if equal(v) {
@@ -31,7 +29,6 @@ func ContainsFunc[T any](src []T, equal func(src T) bool) bool {
 // ContainsAny 判断切片中是否存在val中的任何一个元素
 func ContainsAny[T comparable](src, val []T) bool {
 	srcMap := toMap[T](src)
-	fmt.Println(srcMap)
 	for _, v := range val {
 		if _, exist := srcMap[v]; exist {
 			return true
