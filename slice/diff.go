@@ -28,11 +28,11 @@ func DiffSet[T comparable](src []T, dst []T) []T {
 func DiffSetFunc[T any](src, dst []T, equal EqualFunc[T]) []T {
 	var ret = make([]T, 0, len(src))
 	for _, v := range src {
-		if ContainsFunc[T](dst, func(src T) bool {
-			return equal(v, src)
+		if !ContainsFunc[T](dst, func(compare T) bool {
+			return equal(v, compare)
 		}) {
 			ret = append(ret, v)
 		}
 	}
-	return ret
+	return deduplicateFunc[T](ret, equal)
 }

@@ -93,6 +93,7 @@ func toMap[T comparable](src []T) map[T]struct{} {
 	return dataMap
 }
 
+// deduplicateFunc 去重
 func deduplicateFunc[T any](data []T, equal EqualFunc[T]) []T {
 	var newData = make([]T, 0, len(data))
 	for k, v := range data {
@@ -105,6 +106,7 @@ func deduplicateFunc[T any](data []T, equal EqualFunc[T]) []T {
 	return newData
 }
 
+// deduplicate 去重
 func deduplicate[T comparable](data []T) []T {
 	dataMap := toMap[T](data)
 	var newData = make([]T, 0, len(dataMap))

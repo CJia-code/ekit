@@ -26,7 +26,7 @@ func UnionSet[T comparable](src, dst []T) []T {
 }
 
 // UnionSetFunc 并集，支持任意类型
-// 你应该优先使用 UnionSet
+// 优先使用 UnionSet
 // 已去重
 func UnionSetFunc[T any](src, dst []T, equal EqualFunc[T]) []T {
 	var ret = make([]T, 0, len(src)+len(dst))
