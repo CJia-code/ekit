@@ -21,6 +21,12 @@ type ConcurrentList[T any] struct {
 	lock sync.RWMutex
 }
 
+// NewConcurrentListOfSlice 初始化一个ArrayList，并延续接口的方法
+func NewConcurrentListOfSlice[T any](ts []T) *ConcurrentList[T] {
+	var list List[T] = NewArrayListOf(ts)
+	return &ConcurrentList[T]{List: list}
+}
+
 func (c *ConcurrentList[T]) Get(index int) (T, error) {
 	c.lock.RLock()
 	defer c.lock.RUnlock()
