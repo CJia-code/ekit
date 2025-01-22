@@ -9,7 +9,7 @@
 package slice
 
 import (
-	"github.com/CJia-code/ekit/internal/errors"
+	"github.com/CJia-code/ekit/internal/errs"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -41,13 +41,13 @@ func TestAdd(t *testing.T) {
 			name:    "index out of range",
 			slice:   []int{123, 100},
 			index:   12,
-			wantErr: errors.NewErrIndexOutOfRange(2, 12),
+			wantErr: errs.NewErrIndexOutOfRange(2, 12),
 		},
 		{
 			name:    "index less than 0",
 			slice:   []int{123, 100},
 			index:   -1,
-			wantErr: errors.NewErrIndexOutOfRange(2, -1),
+			wantErr: errs.NewErrIndexOutOfRange(2, -1),
 		},
 		{
 			name:      "index last",
@@ -68,7 +68,7 @@ func TestAdd(t *testing.T) {
 			slice:   []int{123, 100, 101, 102, 102, 102},
 			addVal:  233,
 			index:   7,
-			wantErr: errors.NewErrIndexOutOfRange(6, 7),
+			wantErr: errs.NewErrIndexOutOfRange(6, 7),
 		},
 	}
 

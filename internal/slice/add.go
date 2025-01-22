@@ -8,7 +8,7 @@
 
 package slice
 
-import "github.com/CJia-code/ekit/internal/errors"
+import "github.com/CJia-code/ekit/internal/errs"
 
 // Add 添加元素到切片
 // src: 原切片
@@ -18,7 +18,7 @@ import "github.com/CJia-code/ekit/internal/errors"
 func Add[T any](src []T, element T, index int) ([]T, error) {
 	length := len(src)
 	if length < 0 || index < 0 || index > length {
-		return nil, errors.NewErrIndexOutOfRange(index, length)
+		return nil, errs.NewErrIndexOutOfRange(index, length)
 	}
 	// 声明一个比原切片长度多1的切片
 	dst := make([]T, length+1)

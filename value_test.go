@@ -10,7 +10,7 @@ package ekit
 
 import (
 	"errors"
-	errs "github.com/CJia-code/ekit/internal/errors"
+	"github.com/CJia-code/ekit/internal/errs"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

@@ -8,7 +8,7 @@
 
 package slice
 
-import "github.com/CJia-code/ekit/internal/errors"
+import "github.com/CJia-code/ekit/internal/errs"
 
 // Delete 删除切片中的元素
 // src: 原切片
@@ -18,7 +18,7 @@ func Delete[T any](src []T, index int) ([]T, T, error) {
 	length := len(src)
 	if index < 0 || index >= length {
 		var zero T
-		return nil, zero, errors.NewErrIndexOutOfRange(length, index)
+		return nil, zero, errs.NewErrIndexOutOfRange(length, index)
 	}
 	result := src[index]
 	// 从index位置开始，后面的元素依次往前挪1个位置
